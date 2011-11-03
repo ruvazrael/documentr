@@ -1,0 +1,12 @@
+= simple_form_for @content do |f|
+  = f.input :title
+  = f.input :description, :as => 'text'
+  = f.input :file do
+    .input_holder
+      - if @content.file
+        = link_to @content.file_name, download_content_path(@content)
+        <br />
+      = f.file_field :file
+  = f.input :source
+  = f.input :added_by      
+  = f.submit

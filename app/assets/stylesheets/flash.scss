@@ -1,0 +1,16 @@
+div#flashbox {
+	width: 100%;
+	padding: 10px;
+	text-align: center;
+	background-color: #efefef;
+	border: 1px solid #ccc;
+
+	div.error {
+		color: red;
+	}
+
+	div.notice {
+		color: green;
+	}
+
+}

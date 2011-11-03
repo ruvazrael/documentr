@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %>
+
+<p>
+  <b>Title:</b>
+  <%= @content.title %>
+</p>  
+
+<p>
+  <b>Description:</b>
+  <%= @content.description %>
+</p>
+
+<p>
+  <b>File:</b>
+  <%= link_to @content.file_name, download_content_path(@content)%>
+</p>
+
+<p>
+  <b>Source:</b> 
+  <%= @content.source %>
+</p>
+
+<p>
+  <b>Added by:</b>
+  <%= @content.added_by %>
+</p>
+       
+<%= link_to 'Edit', edit_content_path(@content)   %>
+<%= link_to 'Back', contents_path %>
+<br />
+
+<%= link_to 'Destroy', content_path(@content), :method => 'delete', :confirm => 'Really delete?' %>

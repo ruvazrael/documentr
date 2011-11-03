@@ -1,0 +1,36 @@
+form.simple_form {
+	div {
+		&.field_with_errors {
+			input {
+				border: 2px solid red;
+
+			}
+			span.error {
+				background-color: red;
+				color: white;
+				padding: 3px;
+			}
+		}
+
+		div.input_holder {
+		  display: inline-block;
+		  margin: 0;
+		  padding: 0;
+		}
+
+		label {
+			width: 200px;
+			float: left;
+
+			&.required {
+				abbr {
+				  color: red;
+				}
+			} 
+		}
+	}
+}
+
+abbr {
+  color: red;
+}
