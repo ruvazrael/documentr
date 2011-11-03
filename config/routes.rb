@@ -2,6 +2,7 @@ Document::Application.routes.draw do
   
   root :to => 'home#index'
   
+  resources :users
   resources :contents do
     member do
       get 'download'
