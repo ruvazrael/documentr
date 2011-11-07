@@ -1,21 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Document</title>
+  <title>Document <%= t("titles.#{controller_name}.#{action_name}") %></title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= content_for :header %>
+  <% if Rails.env.development? %>
+  <script type="text/javascript" charset="utf-8">
+    jQuery(function(){ jQuery("div#debugparams").click(function(){jQuery("div#debugparams").hide()})});
+  </script>
+  <% end %>
 </head>
 <body>
-<% if flash.present? %>
-  <div id="flashbox">
-    <% flash.each do |k,v| %>
-      <div class="<%= k %>">
-        <%= v %>
-      </div>
-    <% end %>
-  </div>  
-<% end %>      
+  
+  <% if flash.present? %>
+     <div id="flashbox">
+       <% flash.each do |k, v| %>
+         <div class="<%= k %>">
+           <%= v %>
+         </div>
+       <% end %>
+     </div>  
+   <% end %>
+   
+   <% if Rails.env.development? %>
+    <div id="debugparams" style="background-color: #ffcccc; position:fixed; right:0px; bottom:0px; width:200px; height: 100px; overflow:scroll; border: 1px solid black;">
+      <%= debug(params) %>
+    </div>
+  <% end %>
+</body>
 
 <%= yield %>
 

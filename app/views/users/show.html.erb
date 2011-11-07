@@ -1,8 +1,8 @@
-<p id="notice"><%= notice %>
+<p id="notice"><%= notice %></p>
 
 <p>
   <b>Name:</b>
-  <%= @user.first_name + @user.last_name.humanize %>
+  <%= @user.first_name.humanize + " " + @user.last_name.humanize %>
 </p>  
 
 <p>
@@ -11,22 +11,22 @@
 </p>
 
 <p>
-  <b>File:</b>
-  <%= link_to @user.file_name, download_user_path(@user)%>
+  <b>Remark:</b>
+  <%=  @user.remark %>
 </p>
 
 <p>
-  <b>Source:</b> 
-  <%= @user.source %>
+  <b>Role:</b> 
+  <%= @user.role %>
 </p>
 
 <p>
-  <b>Added by:</b>
-  <%= @user.added_by %>
+  <b>Password:</b>
+  <%= @user.password_digest %>
 </p>
        
 <%= link_to 'Edit', edit_user_path(@user)   %>
 <%= link_to 'Back', users_path %>
 <br />
 
-<%= link_to 'Destroy', user_path(@user), :method => 'delete', :confirm => 'Really delete?' %>
+<%= link_to 'Destroy',  user_path(@user),  :method => 'delete', :confirm => 'Really delete?' %>

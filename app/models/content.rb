@@ -1,4 +1,8 @@
 class Content < ActiveRecord::Base
+  
+  validates_presence_of :title, :file
+  
+  
   def file=(f)
      if f.is_a?(ActionDispatch::Http::UploadedFile) or f.is_a?(File)
        self[:file] = f.read
