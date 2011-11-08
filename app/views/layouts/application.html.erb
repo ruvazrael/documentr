@@ -25,13 +25,28 @@
    <% end %>
    
    <% if Rails.env.development? %>
-    <div id="debugparams" style="background-color: #ffcccc; position:fixed; right:0px; bottom:0px; width:200px; height: 100px; overflow:scroll; border: 1px solid black;">
+    <div id="debugparams" >
       <%= debug(params) %>
     </div>
-  <% end %>
+   <% end %>
+   
+    <div id="pagewrapper">
+      <div id="header">
+        <p>Something in here</p>
+      </div>
+      <div id="navbar">  
+        <ul>
+          <li><%= link_to 'Home', index_home_path%>
+      </div>
+      <div id ="content">  
+        <%= yield %>
+      </div>
+      <div id='footer'>
+        <p>Filled with water</p>
+      </div>  
 </body>
 
-<%= yield %>
+
 
 </body>
 </html>

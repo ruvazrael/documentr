@@ -45,8 +45,4 @@ class ContentsController < ApplicationController
     redirect_to(contents_path)
   end
   
-  def download
-    @content = Content.find(params[:id])
-    send_data(@content.file, :filename => @content.file_name)
-  end  
-end    
+ end    

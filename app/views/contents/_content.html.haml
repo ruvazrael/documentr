@@ -1,12 +1,11 @@
 = simple_form_for @content do |f|
   = f.input :title
   = f.input :description, :as => 'text'
-  = f.input :file do
-    .input_holder
-      - if @content.file
-        = link_to @content.file_name, download_content_path(@content)
-        <br />
-      = f.file_field :file
+  = f.input :content
+  <label>My Avatar</label>
+  <%= image_tag(@content.file_url) if @content.file? %>
+  = f.file_field :file
+  = f.hidden_field :file_cache
   = f.input :source
   = f.input :added_by      
   = f.submit
