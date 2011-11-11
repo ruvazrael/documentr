@@ -1,10 +1,24 @@
 Document::Application.routes.draw do
   
-  root :to => 'home#index'
+  get "logout" => "sessions#destroy", :as => "logout" 
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+  get "secret" => "secret#index"
+  get "pages/home"
+
+  get "pages/resources"
+
+  get "pages/contact"
+
+  get "pages/about"
+
+  root :to => "users#new"
   
-  resources :home
+  resources :pages
   resources :users
-  resources :contents 
+  resources :contents
+  resources :sessions
+   
 end    
   # The priority is based upon order of creation:
   # first created -> highest priority.

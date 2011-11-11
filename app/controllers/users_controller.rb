@@ -25,6 +25,7 @@ def update
 end
 
 def new
+    @title = "Add new user"
     @user = User.new()
 end
 
@@ -32,7 +33,7 @@ def create
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Created User"
-      redirect_to user_path(@user)
+      redirect_to root_url
     else
       flash[:error] = "Sorry, this didn't work"
       render "new"
