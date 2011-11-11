@@ -5,7 +5,7 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
-  <%= content_for :header %>
+  
   
   <% if Rails.env.development? %>
   <script type="text/javascript" charset="utf-8">
@@ -37,10 +37,11 @@
       </div>
       <div id="navbar">  
         <ul>
-          <li><%= link_to 'Home',{:controller => 'pages', :action => 'home'} %></li>
+          <li><%= link_to 'Home',{:controller => 'sessions', :action => 'new'} %></li>
           <li><%= link_to 'Resources', {:controller =>'contents', :action => 'index'}%></li>
           <li><%= link_to 'Contact', {:controller =>'pages', :action => 'contact'}%></li>
           <li><%= link_to 'About us', {:controller =>'pages', :action => 'about'}%></li>
+          <li><%= link_to 'Users', {:controller =>'users', :action => 'index'}%></li>
       </div>
       <div id ="content">  
         <%= yield %>

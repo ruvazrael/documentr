@@ -2,10 +2,7 @@
   = f.input :title
   = f.input :description, :as => 'text'
   = f.input :content
-  <label>My Avatar</label>
-  = image_tag(@content.file_url) if @content.file? 
-  = f.file_field :file
-  = f.hidden_field :file_cache
+  = f.input :file, :as => 'file'  
   = f.input :source
   = f.input :added_by      
   = f.submit

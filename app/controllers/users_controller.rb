@@ -33,7 +33,7 @@ def create
     @user = User.new(params[:user])
     if @user.save
       flash[:notice] = "Created User"
-      redirect_to root_url
+      redirect_to users_path
     else
       flash[:error] = "Sorry, this didn't work"
       render "new"

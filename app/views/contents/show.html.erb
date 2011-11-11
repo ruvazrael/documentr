@@ -12,9 +12,11 @@
 
 <p>
   <b>File:</b>
-  <%= link_to @content.file %>
+  <%= File.basename (@content.file_url.to_s)%>
 </p>
-
+<p>
+  <%= image_tag @content.file_url.to_s%>
+  </p>
 <p>
   <b>Source:</b> 
   <%= @content.source %>
