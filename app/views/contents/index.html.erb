@@ -9,10 +9,9 @@
 <% @contents.each do |content| %>
   <tr>
     <td><%= content.title %></td>
-    <div class = "preview">
-      <td><%= image_tag content.file_url(:thumb).to_s%></td>
-     <td> <%= @file  %></td>
-    </div>  
+    
+      <td><%= image_tag content.file_url(:thumb).to_s %></td>
+    
     <td><%= link_to "Show", content  %><td>
     <td><%= link_to 'Edit', edit_content_path(content) %></td>  
     <td><%= link_to 'Destroy',  content, confirm: 'Are you sure?', :method => 'delete' %></td>

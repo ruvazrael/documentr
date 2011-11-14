@@ -14,9 +14,11 @@
   <b>File:</b>
   <%= File.basename (@content.file_url.to_s)%>
 </p>
+<div id="showpic">
 <p>
   <%= image_tag @content.file_url.to_s%>
   </p>
+</div>  
 <p>
   <b>Source:</b> 
   <%= @content.source %>
