@@ -12,12 +12,16 @@ Document::Application.routes.draw do
 
   get "pages/about"
 
-  root :to => "users#new"
+  root :to => "pages#home"
   
   resources :pages
-  resources :users
-  resources :contents
   resources :sessions
+  
+  namespace :admin do
+    resources :users
+    resources :contents
+  end
+    
    
 end    
   # The priority is based upon order of creation:
