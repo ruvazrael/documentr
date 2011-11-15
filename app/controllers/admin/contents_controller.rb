@@ -1,6 +1,5 @@
-class ContentsController < ApplicationController
-
-    protect_from_forgery
+class Admin::ContentsController < Admin::ApplicationController
+  
   def index
     @contents = Content.all
   end
