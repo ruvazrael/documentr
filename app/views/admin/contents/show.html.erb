@@ -29,8 +29,8 @@
   <%= @content.added_by %>
 </p>
        
-<%= link_to 'Edit', edit_content_path(@content)   %>
-<%= link_to 'Back', contents_path %>
+<%= link_to 'Edit', edit_admin_content_path(@content)   %>
+<%= link_to 'Back', admin_contents_path %>
 <br />
 
-<%= link_to 'Destroy', content_path(@content), :method => 'delete', :confirm => 'Really delete?' %>
+<%= link_to 'Destroy', admin_content_path(@content), :method => 'delete', :confirm => 'Really delete?' %>

@@ -16,7 +16,7 @@ class Admin::ContentsController < Admin::ApplicationController
     @content = Content.find(params[:id])
     if @content.update_attributes(params[:content])
       flash[:notice] = "Updated Content"
-      redirect_to content_path(@content)
+      redirect_to admin_content_path(@content)
     else
       flash[:error] = "Sorry, this didn't work"
       render "edit"
@@ -31,7 +31,7 @@ class Admin::ContentsController < Admin::ApplicationController
       @content = Content.new(params[:content])
       if @content.save
         flash[:notice] = "Created Content"
-        redirect_to content_path(@content)
+        redirect_to admin_content_path(@content)
       else
         flash[:error] = "Sorry, this didn't work"
         render "new"
@@ -41,7 +41,7 @@ class Admin::ContentsController < Admin::ApplicationController
   def destroy
     @content = Content.find(params[:id])
     @content.destroy
-    redirect_to(contents_path)
+    redirect_to(admin_contents_path)
   end
   
  end    

@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-   protect_from_forgery
+
    def home
      @pagetitle = "Welcome to Documentr"
    end

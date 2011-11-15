@@ -19,7 +19,7 @@ class Admin::UsersController < Admin::ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:notice] = "Updated User"
-      redirect_to user_path(@user)
+      redirect_to admin_user_path(@user)
     else
       flash[:error] = "Sorry, this didn't work"
       render "edit"
@@ -35,7 +35,7 @@ class Admin::UsersController < Admin::ApplicationController
       @user = User.new(params[:user])
       if @user.save
         flash[:notice] = "Created User"
-        redirect_to users_path
+        redirect_to admin_users_path
       else
         flash[:error] = "Sorry, this didn't work"
         render "new"
@@ -45,7 +45,7 @@ class Admin::UsersController < Admin::ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to(users_path)
+    redirect_to(admin_users_path)
   end
 
 end

@@ -1,22 +1,19 @@
 <h1>User site</h1>
 
-<table>
-  <tr>
-    <th>User</th>
-    
-  </tr>
-  
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.first_name.humanize + " " + user.last_name.humanize %></td>
-    <td><%= link_to 'Show', user  %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>  
-    <td><%= link_to 'Destroy',  user, confirm: 'Are you sure?', method: :delete %></td>
-    
-  </tr>  
-<% end %>  
-</table>
+<%= 
+  table_for @users do |t|
+    t.column :id, header: "Ihkjhk"
+    t.column :first_name
+    t.column :last_name
+    t.column :email
+    t.action do |user|
+      link_to('Show', [:admin, user]) + " " +
+      link_to('Edit', edit_admin_user_path(user)) + " " +
+      link_to('Destroy',  [:admin, user], confirm: 'Are you sure?', method: :delete)
+    end
+  end
+%>
 
 <br />
 
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_admin_user_path %>

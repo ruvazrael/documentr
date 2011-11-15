@@ -12,6 +12,8 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'cancan'
 
+gem 'tabulatr', :git => 'https://github.com/provideal/tabulatr.git'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
