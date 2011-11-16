@@ -13,12 +13,17 @@
       <td><%= image_tag content.file_url(:thumb).to_s %></td>
     
     <td><%= link_to "Show", [:admin, content]  %><td>
+  <% if can? :update, content%>    
     <td><%= link_to 'Edit', edit_admin_content_path(content) %></td>  
+  <% end %>  
+  <% if can? :destroy, content %>
     <td><%= link_to 'Destroy',  [:admin, content], confirm: 'Are you sure?', :method => 'delete' %></td>
+  <% end %>  
   </tr>  
 <% end %>  
 </table>
 
 <br />
-
-<%= link_to 'New Content', new_admin_content_path %>
+<% if can? :create, content%>
+  <%= link_to 'New Content', new_admin_content_path %>
+<% end %>  

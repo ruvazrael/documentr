@@ -8,12 +8,16 @@
     t.column :email
     t.action do |user|
       link_to('Show', [:admin, user]) + " " +
+      <% if can? :update, @user %>
       link_to('Edit', edit_admin_user_path(user)) + " " +
+      <% end %>
+      <% if can? :destroy, @user %>
       link_to('Destroy',  [:admin, user], confirm: 'Are you sure?', method: :delete)
     end
   end
 %>
-
+<% end %>
 <br />
-
-<%= link_to 'New User', new_admin_user_path %>
+<% if can? :create, @user %>
+  <%= link_to 'New User', new_admin_user_path %>
+<% end %>

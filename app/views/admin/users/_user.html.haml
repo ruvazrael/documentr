@@ -5,7 +5,7 @@
  = f.input :email
  = f.input :password
  = f.input :remark 
- = f.input :role   
+ = f.input :role, :as => collection_select, User::ROLES, :to_s, :humanize   
  = f.submit
  
  <p>Fields with <abbr title="required">*</abbr> are required fields</p>
