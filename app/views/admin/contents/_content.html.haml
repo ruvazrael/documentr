@@ -4,5 +4,5 @@
   = f.input :content
   = f.input :file, :as => 'file'
   = f.input :source
-  = f.input :added_by      
+  = f.input :added_by , :as => :hidden, :input_html => { :value => "#{current_user.email}"}     
   = f.submit
