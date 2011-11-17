@@ -24,6 +24,6 @@
 </table>
 
 <br />
-<% if can? :create, content%>
+<% if can?(:create, Content) %>
   <%= link_to 'New Content', new_admin_content_path %>
 <% end %>  

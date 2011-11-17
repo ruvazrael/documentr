@@ -5,7 +5,9 @@
  = f.input :email
  = f.input :password
  = f.input :remark 
- = f.input :role, :as => collection_select, User::ROLES, :to_s, :humanize   
+ = f.input :role, :collection => User::ROLES, :include_blank => false
  = f.submit
  
  <p>Fields with <abbr title="required">*</abbr> are required fields</p>
+= form_for [:admin, @user] do |f| 
+ = f.collection_select :role, User::ROLES, :to_s, :humanize    

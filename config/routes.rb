@@ -2,8 +2,8 @@ Document::Application.routes.draw do
   
   get "logout" => "sessions#destroy", :as => "logout" 
   get "login" => "sessions#new", :as => "login"
-  get "signup" => "users#new", :as => "signup"
-  get "secret" => "secret#index"
+  get "signup" => "admin_users#new", :as => "signup"
+  
   get "pages/home"
 
   get "pages/resources"
