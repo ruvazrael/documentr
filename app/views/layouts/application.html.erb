@@ -41,7 +41,16 @@
           <li><%= link_to 'Resources', admin_contents_path()  %></li>
           <li><%= link_to 'Contact',   pages_contact_path() %></li>
           <li><%= link_to 'About us',  pages_about_path() %></li>
-          <li><%= link_to 'Users',     admin_users_path() %></li>
+          <% if can? :manage, User %>
+            <li><%= link_to 'Users',     admin_users_path() %></li>
+          <% end %>
+          <li><% if current_user %>
+             Logged in as <%= current_user.email %></li>
+             <li><%= link_to "Log out", logout_path() %></li>
+           <% else %>
+           <li><%#= link_to "Sign up", signup_path() %></li>
+             <li><%= link_to "Log in", login_path() %></li>
+           <% end %>
       </div>
       <div id ="content">  
         <%= yield %>

@@ -9,5 +9,3 @@
  = f.submit
  
  <p>Fields with <abbr title="required">*</abbr> are required fields</p>
-= form_for [:admin, @user] do |f| 
- = f.collection_select :role, User::ROLES, :to_s, :humanize    
