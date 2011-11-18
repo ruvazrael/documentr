@@ -2,7 +2,7 @@
 
 <p>
   <b>Name:</b>
-  <%= @user.salutation.humanize + " "+ @user.first_name.humanize + " " + @user.last_name.humanize %>
+  <%= @user.salutation.to_s.humanize + " "+ @user.first_name.to_s.humanize + " " + @user.last_name.to_s.humanize %>
 </p>  
 
 <p>

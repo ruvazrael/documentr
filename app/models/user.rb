@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
     role == r.to_s
   end
   
-   ROLES = %w[Admin Author user]
+   ROLES = %w[Admin Author User]
 
 end

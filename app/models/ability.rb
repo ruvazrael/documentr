@@ -6,8 +6,13 @@ class Ability
 
     if user.role?(:Admin)
       can :manage, :all
-    else
+      can :destroy, :all
+    end
+    if user.role?(:user)
       can :read, :content
+      can :update, User do |user|
+        user.try(:user) == user
+      end  
     end
     if user.role? :Author
       can :create, Content

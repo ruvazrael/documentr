@@ -11,6 +11,7 @@ gem 'simple_form'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'cancan'
+gem 'stylr', :git => 'git@github.com:provideal/stylr.git',:branch => "refactor"
 
 gem 'tabulatr', :git => 'https://github.com/provideal/tabulatr.git'
 

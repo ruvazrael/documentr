@@ -1,5 +1,7 @@
 class Admin::UsersController < Admin::ApplicationController
     
+    load_and_authorize_resource
+    
   def index
     @users = User.all
     # find_for_table(params) do |b|
