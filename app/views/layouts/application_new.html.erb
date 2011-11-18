@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'stylr/all' %>
+  <%= csrf_meta_tags %>
+  <title>Documentr</title>
+</head>
+<body>
+
+<%#
+  Example for a metabar. The metabar uses the same styles and markup as the topbar
+  but with a smaller line-height and color by default. Right aligned content must
+  be placed inside .sub-area class.
+%> <%#
+<div id="metabar-wrapper">
+  <div id="metabar">
+    <div class="sub-area">
+      <div class="menu">
+        <ul>
+          <li class="raw">
+            Hello <%= current_user.try :email %>
+  <%#        </li>
+          <li><a href="#">Item 1</a></li>
+          <li><a href="#">Item 2</a></li> 
+          <li class="dropdown">
+            <a href="#">Dropdown</a>
+            <ul>
+              <li><a href="#">Sub-Item 1</a></li>
+              <li><a href="#">Sub-Item 2</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sub-Item 3</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>  %>
+
+<%#
+  Example for a topbar. The topbar holds the main menu and an right aligned menu
+  inside the sub-area. It also holds the app title or logo.
+%>
+<div id="topbar-wrapper">
+  <div id="topbar">
+    <h1>Documentr</h1>
+
+    <div class="menu">
+      <ul>
+        <li><%= link_to 'Home',      pages_home_path() %></li>
+        <li><%= link_to 'Resources', admin_contents_path()  %></li>
+        <li><%= link_to 'Contact',   pages_contact_path() %></li>
+        <li><%= link_to 'About us',  pages_about_path() %></li>
+        <% if can? :manage, User %>
+          <li><%= link_to 'Users',     admin_users_path() %></li>
+        <% end %>
+        <li><% if current_user %>
+           Logged in as <%= current_user.email %></li>
+           <li><%= link_to "Log out", logout_path() %></li>
+         <% else %>
+         <li><%#= link_to "Sign up", signup_path() %></li>
+           <li><%= link_to "Log in", login_path() %></li>
+         <% end %>
+        
+ <%#       <li><a href="#">Item 1</a></li>
+        <li><a href="#">Item 2</a></li>  
+        <li class="dropdown">
+          <a href="#">Dropdown</a>
+          <ul>
+            <li><a href="#">Sub-Item 1</a></li>
+            <li><a href="#">Sub-Item 2</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Sub-Item 3</a></li>
+          </ul>
+        </li>       %>
+        <li class="raw">
+          
+        </li>
+      </ul>
+    </div>
+
+    <div class="sub-area">
+      <div class="menu">
+        <ul>
+          <li class="dropdown">
+            <a href="#" style="font-size:200%">&#9881;</a>
+            <ul>
+              <li><a href="#">Sub-Item 1</a></li>
+              <li><a href="#">Sub-Item 2</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sub-Item 3</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="alertarea-wrapper">
+  <div id="alertarea">
+    <div class="alert warning">
+  <%#    <a class="close" href="#">×</a>
+      <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>  %>
+    </div>
+  </div>
+</div>
+
+
+<%#
+  This is the main area.
+%>
+<div id="mainarea-wrapper">
+  <div id="mainarea" class="<%= content_for(:sidebar).present? ? 'with-sidebar' : 'without-sidebar' -%>">
+    <% if content_for?(:sidebar) %>
+      <div id="sidebar">
+        <%= yield(:sidebar) %>
+      </div>
+    <% end %>
+
+
+    <div id="pagearea">
+      <div id="page">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-wrapper">
+  <div id="footer">
+    &copy; <%= Time.now.year -%> metaminded. All rights reserved. &#10084; Handmade with love.
+  </div>
+</div>
+
+</body>
+</html>
