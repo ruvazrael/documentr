@@ -8,7 +8,7 @@ class Ability
       can :manage, :all
     end
     if user.role?(:User)
-      can :read, :content
+      can :read, Content
       can :update, User do |user|
         user.try(:user) == user
       end  
