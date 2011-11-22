@@ -2,7 +2,7 @@
 
 <p>
   <b>Title:</b>
-  <%= @content.title %>
+  <%= link_to @content.title %>
 </p>  
 
 <p>
@@ -12,7 +12,7 @@
 
 <p>
   <b>File:</b>
-  <%= File.basename (@content.file_url.to_s)%>
+  <%=  File.basename (@content.file_url.to_s)%>
 </p>
 <div id="showpic">
 <p>

@@ -9,7 +9,7 @@ gem 'sqlite3'
 gem 'haml'
 gem 'simple_form'
 gem 'carrierwave'
-gem 'rmagick'
+gem 'mini_magick'
 gem 'cancan'
 gem 'stylr', :git => 'git@github.com:provideal/stylr.git',:branch => "refactor"
 

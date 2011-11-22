@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-  users = User.create([{ email: 'aaa@a.de' }, { password: 'aaaaaa' }])
+  users = User.create([{ email: 'aa@a.de' }, { password: 'aaaaaa' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)

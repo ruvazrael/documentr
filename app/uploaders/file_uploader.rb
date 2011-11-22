@@ -3,13 +3,8 @@
 class FileUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
-   include CarrierWave::RMagick
-  
-
-   
-   
-   
- # include CarrierWave::MiniMagick
+  #include CarrierWave::RMagick
+  include CarrierWave::MiniMagick
   # include CarrierWave::ImageScience
 #process :resize_to_fit => [250, 250]
   
@@ -37,9 +32,9 @@ class FileUploader < CarrierWave::Uploader::Base
     
     
   # Create different versions of your uploaded files:
-  version :thumb, :if => :image? do
-    process :resize_to_limit => [50, 50]
-  end
+#   version :thumb do
+#    process :resize_to_fill => [50, 50]
+#  end
 protected
   def image?(new_file)
     new_file.content_type.include? 'image'

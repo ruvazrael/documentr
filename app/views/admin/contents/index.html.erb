@@ -10,7 +10,8 @@
   <tr>
     <td><%= content.title %></td>
     
-      <td><%= image_tag content.file_url(:thumb).to_s %></td>
+      <td><%= link_to image_tag(content.file_url,:width => 50),content.file_url, :target => "_blank" %>
+			</td>
     
     <td><%= link_to "Show", [:admin, content]  %><td>
   <% if can? :update, content%>    
