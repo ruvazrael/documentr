@@ -1,5 +1,7 @@
-Document::Application.routes.draw do
+ Document::Application.routes.draw do
   
+ 
+
   get "logout" => "sessions#destroy", :as => "logout" 
   get "login" => "sessions#new", :as => "login"
   get "signup" => "admin_users#new", :as => "signup"
@@ -16,10 +18,11 @@ Document::Application.routes.draw do
   
   resources :pages
   resources :sessions
-  
+  resources :password_resets
   namespace :admin do
     resources :users
     resources :contents
+   
   end
     
    

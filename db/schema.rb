@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122134214) do
+ActiveRecord::Schema.define(:version => 20111123085611) do
 
   create_table "contents", :force => true do |t|
     t.string   "title"
@@ -44,6 +44,9 @@ ActiveRecord::Schema.define(:version => 20111122134214) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "roles_mask"
+    t.string   "auth_token"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
   end
 
 end
