@@ -14,8 +14,8 @@ class Ability
       end  
     end
     if user.role? :Author
-      can :create, Content
-      can :update, Content
+      can :manage, Content
+     
     end
   end
 end          

@@ -4,10 +4,22 @@
   <%= stylesheet_link_tag    'application' %>
   <%= javascript_include_tag 'stylr/all' %>
   <%= csrf_meta_tags %>
+	<% if Rails.env.development? %>
+  <script type="text/javascript" charset="utf-8">
+    jQuery(function(){ jQuery("div#debugparams").click(function(){jQuery("div#debugparams").hide()})});
+  </script>
+  <% end %>
+
   <title>Documentr</title>
 </head>
 <body>
 
+   
+   <% if Rails.env.development? %>
+    <div id="debugparams" >
+      <%= debug(params) %>
+    </div>
+   <% end %>
 <%#
   Example for a metabar. The metabar uses the same styles and markup as the topbar
   but with a smaller line-height and color by default. Right aligned content must
@@ -102,8 +114,18 @@
 <div id="alertarea-wrapper">
   <div id="alertarea">
     <div class="alert warning">
-  <%#    <a class="close" href="#">×</a>
-      <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>  %>
+     <a class="close" href="#">×</a>
+	
+  <% if flash.present? %>
+     <div id="flashbox">
+       <% flash.each do |k, v| %>
+         <div class="<%= k %>">
+           <%= v %>
+         </div>
+       <% end %>
+     </div>  
+   <% end %>
+    <%#   <p><strong>Holy guacamole!</strong> Best check yo self, you’re not looking too good.</p>  %>
     </div>
   </div>
 </div>
