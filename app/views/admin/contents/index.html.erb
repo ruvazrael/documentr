@@ -2,29 +2,22 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    
+    <th>id</th><th>Title</th><th>Bild</th><th>Content</th>
   </tr>
-  
-<% @contents.each do |content| %>
-  <tr>
-    <td><%= content.title %></td>
-    
-      <td><%= link_to image_tag(content.file_url,:width => 50),content.file_url, :target => "_blank" %>
-			</td>
-    
-    <td><%= link_to "Show", [:admin, content]  %><td>
-  <% if can? :update, content%>    
-    <td><%= link_to 'Edit', edit_admin_content_path(content) %></td>  
+  <% @contents.each do |content| %>
+    <tr>
+      <td><%= content.id %></td>
+      <td><%= content.title %></td>
+      <td><%= link_to image_tag(content.thumb_url,:width => 50), admin_content_path(content), :target => "_blank" %></td>
+      <td><%= link_to(content.content, content.content, :target => "_blank") %></td>
+      <td><%= link_to "Show", [:admin, content]  %><td>
+      <td><%= link_to('Edit', edit_admin_content_path(content)) if can? :update, content %></td>  
+      <td><%= link_to('Destroy',  [:admin, content], confirm: 'Are you sure?', :method => 'delete') if can? :destroy, content %></td>
+    </tr>  
   <% end %>  
-  <% if can? :destroy, content %>
-    <td><%= link_to 'Destroy',  [:admin, content], confirm: 'Are you sure?', :method => 'delete' %></td>
-  <% end %>  
-  </tr>  
-<% end %>  
 </table>
 
 <br />
 <% if can?(:create, Content) %>
-  <%= link_to 'New Content', new_admin_content_path %>
+  <%= link_to 'New Content', new_admin_content_path(:muff => "puff") %>
 <% end %>  

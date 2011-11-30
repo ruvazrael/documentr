@@ -6,13 +6,9 @@
   get "login" => "sessions#new", :as => "login"
   get "signup" => "admin_users#new", :as => "signup"
   
-  get "pages/home"
-
-  get "pages/resources"
-
-  get "pages/contact"
-
-  get "pages/about"
+  %w{home resources contact about}.each do |name|
+    get name => "pages##{name}", :as => "pages_#{name}"
+  end
 
   root :to => "pages#home"
   
