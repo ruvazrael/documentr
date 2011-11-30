@@ -1,0 +1,15 @@
+= show_for @content do |c|
+  = c.attribute :title
+  = c.attribute :link if @content.link.present?
+  = c.attribute :description if @content.description.present?
+  - if @content.file.present?
+    = c.attribute :file do
+      = image_tag @content.file_url.to_s
+  = c.attribute :source if @content.source.present?
+  = c.association :author, :using => 'email'
+
+- if can? :update, @content
+  = link_to 'Edit', edit_admin_content_path(@content)
+= link_to 'Back', admin_contents_path()
+- if can? :destroy, @content
+  = link_to 'Destroy', admin_content_path(@content), :method => 'delete', :confirm => 'Really delete?'

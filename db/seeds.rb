@@ -3,5 +3,5 @@
 #
 # Examples:
 #
-   User.create!( email: 'aaa' ,  password: 'a', role: 'Admin' )
+ User.create!( email: 'aaa@aa.aa' ,  password: 'a', role: 'Admin' )
 #   Mayor.create(name: 'Emanuel', city: cities.first)

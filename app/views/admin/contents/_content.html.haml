@@ -1,8 +1,0 @@
-= simple_form_for [:admin, @content], :html => {:multipart => true} do |f|
-  = f.input :title
-  = f.input :description
-  = f.input :content
-  = f.input :file, :as => 'file'
-  = f.input :source
-  = f.input :added_by , :as => :hidden, :input_html => { :value => "#{current_user.email}"}     
-  = f.submit

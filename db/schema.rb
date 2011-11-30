@@ -11,23 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111130120152) do
+ActiveRecord::Schema.define(:version => 20111108215339) do
 
   create_table "contents", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.date     "date"
+    t.string   "file"
     t.text     "content"
     t.string   "source"
-    t.string   "added_by"
+    t.integer  "author_id"
+    t.string   "link"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "file"
-    t.string   "link"
-    t.string   "pdf"
-    t.string   "image"
-    t.string   "crawler"
-    t.string   "type"
   end
 
   create_table "pages", :force => true do |t|
@@ -46,12 +43,12 @@ ActiveRecord::Schema.define(:version => 20111130120152) do
     t.string   "salutation"
     t.string   "remark"
     t.string   "role"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.integer  "roles_mask"
     t.string   "auth_token"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -26,18 +26,18 @@ class Admin::ContentsController < Admin::ApplicationController
   end
   
   def new
-      @content = Content.new()
+    @content = class_for(params[:content_type]).new()
   end
   
   def create
-      @content = Content.new(params[:content])
-      if @content.save
-        flash[:notice] = "Created Content"
-        redirect_to admin_content_path(@content)
-      else
-        flash[:error] = "Sorry, this didn't work"
-        render "new"
-      end
+    @content = class_for(params[:content_type]).new(params[:content])
+    if @content.save
+      flash[:notice] = "Created Content"
+      redirect_to admin_content_path(@content)
+    else
+      flash[:error] = "Sorry, this didn't work"
+      render "new"
+    end
   end
   
   def destroy
@@ -46,4 +46,21 @@ class Admin::ContentsController < Admin::ApplicationController
     redirect_to(admin_contents_path)
   end
   
- end    
+  private
+  
+  def class_for(t)
+    case t
+    when 'pdf' then PdfContent
+    when 'text' then TextContent
+    when 'image' then ImageContent
+    #  ...
+    else raise "unknown content_type '#{t}'"
+    end
+
+    # Cool aber evil:
+    # @content = "#{t.capitalize}Content".constantize
+
+    # auch nett
+    # @content = { 'pdf' => PdfContent, 'text' => TextContent, 'image' => ImageContent }[t]
+  end
+end
