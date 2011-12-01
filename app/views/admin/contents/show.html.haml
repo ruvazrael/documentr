@@ -1,6 +1,8 @@
 = show_for @content do |c|
   = c.attribute :title
-  = c.attribute :link if @content.link.present?
+  - if @content.link.present? 
+    = c.attribute :link do 
+      = link_to(@content.link,@content.link,:target => "_blank")
   = c.attribute :description if @content.description.present?
   - if @content.file.present?
     = c.attribute :file do

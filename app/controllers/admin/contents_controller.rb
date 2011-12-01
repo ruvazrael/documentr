@@ -53,6 +53,8 @@ class Admin::ContentsController < Admin::ApplicationController
     when 'pdf' then PdfContent
     when 'text' then TextContent
     when 'image' then ImageContent
+    when 'link' then LinkContent
+    when 'crawler' then CrawlerContent  
     #  ...
     else raise "unknown content_type '#{t}'"
     end

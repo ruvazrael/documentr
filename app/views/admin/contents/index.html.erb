@@ -21,7 +21,7 @@
 <% if can?(:create, Content) %>
   <%= form_tag new_admin_content_path(), :method => 'get' do %>
     New Content:
-    <%= select_tag "content_type", options_for_select({ 'PDF Document' => :pdf, 'Plain Text' => :text, "Image" => :image}) %>
+    <%= select_tag "content_type", options_for_select({ 'PDF Document' => :pdf, 'Plain Text' => :text, "Image" => :image, "Link" => :link, "Crawler" => :crawler}) %>
     <%= submit_tag "Create" %>
   <% end %>
 <% end %>  
