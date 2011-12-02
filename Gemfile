@@ -12,7 +12,7 @@ gem 'show_for'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'cancan'
-gem 'stylr', :git => 'git@github.com:provideal/stylr.git',:branch => "refactor"
+gem 'stylr', :git => 'git@github.com:provideal/stylr.git'
 
 gem 'tabulatr', :git => 'https://github.com/provideal/tabulatr.git'
 

@@ -36,6 +36,7 @@ class FileUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [50, 50]
   end
 protected
+
   def image?(new_file)
     new_file.content_type.include? 'image'
   end  

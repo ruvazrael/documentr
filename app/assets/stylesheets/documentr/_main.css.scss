@@ -1,0 +1,200 @@
+// use stylr's typography globally
+@include stylr-typography($use-body: true);
+
+// -------------------------------------------------------------
+// utils
+// -------------------------------------------------------------
+
+@mixin main-container() {
+  min-width: 480px;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+// -------------------------------------------------------------
+// metabar
+// -------------------------------------------------------------
+
+#metabar-wrapper {
+  background-color: #333;
+  color: #fff;
+
+  #metabar {
+    @include main-container();
+    @include stylr-topbar(
+      $line-height: 20px,
+      $opaque-background: false,
+      $text-color: #fff,
+      $start-color: #333,
+      $end-color: #333
+    );
+    margin-bottom: 0;
+  }
+}
+
+// -------------------------------------------------------------
+// topbar
+// -------------------------------------------------------------
+
+#topbar-wrapper {
+  @include trailer(1);
+  @include stylr-util-gradient-bar(
+    $text-color: #fff,
+    $start-color: $primary-color,
+    $end-color: darken($primary-color, 5%),
+    $use-border: false,
+    $use-box-shadow: false
+  );
+  border-top: 1px solid lighten($primary-color, 30%);
+  border-bottom: 2px solid darken($primary-color, 10%);
+
+  #topbar {
+    @include main-container();
+    @include stylr-topbar(
+      $opaque-background: false,
+      $text-color: #fff,
+      $start-color: $primary-color,
+      $end-color: darken($primary-color, 5%)
+    );
+    margin-bottom: 0;
+  }
+}
+
+// -------------------------------------------------------------
+// alert area
+// -------------------------------------------------------------
+
+#alertarea-wrapper {
+  @include trailer(1);
+
+  #alertarea {
+    @include main-container();
+    .alert {
+      @include stylr-alerts();
+      @include border-radius(0 0 4px 4px);
+      @include leader(-1);
+      text-align: center;
+    }
+  }
+}
+
+// -------------------------------------------------------------
+// main area
+// -------------------------------------------------------------
+#mainarea-wrapper {
+  @include trailer(1);
+
+  #mainarea {
+    @include main-container();
+    @include min-height(400px);
+    @include pie-clearfix();
+    position: relative;
+    //border-left: 3px solid $light-gray-color;
+    //border-right: 3px solid $light-gray-color;
+
+    #sidebar {
+      @include float-left();
+      @include stretch-y();
+      width: $sidebar-width;
+      padding-top: 45px;
+      background: transparent image-url('stylr/layouts/layout1/sidebar-bg.jpg') no-repeat;
+      background-position: right 0;
+
+      div.menu {
+        @include stylr-menu(
+          $text-color: #666,
+          $hover-color: transparent
+        );
+
+        > ul > li {
+          @include border-radius(0);
+          float: none;
+
+          &.active {
+            background-color: #fff;
+            border-top: 1px solid $light-gray-color;
+            border-bottom: 1px solid $light-gray-color;
+            a {
+              color: #333;
+            }
+          }
+
+          &:hover {
+            a {
+              color: #333;
+            }
+          }
+        }
+      }
+    }
+
+    &.with-sidebar {
+      #pagearea {
+        margin-left: $sidebar-width;
+      }
+    }
+  }
+
+  #pagearea {
+    padding: 0 0 0 20px;
+
+    #page {
+      @include container();
+      overflow: visible;
+
+      #page-actions {
+        @include stylr-well();
+        text-align: right;
+        padding: 10px 19px;
+      }
+
+      form {
+        @include stylr-form();
+      }
+
+      table {
+        @include stylr-table();
+      }
+
+      a.button,
+      input[type="submit"],
+      button {
+        @include stylr-button();
+      }
+
+      div.dropdown-button {
+        @include stylr-button-dropdown();
+      }
+
+      ul.tabs {
+        @include stylr-tabs($style: 'tabs');
+      }
+
+      ul.pills {
+        @include stylr-tabs($style: 'pills');
+      }
+
+      .alert {
+        @include stylr-alerts();
+      }
+
+      .well {
+        @include stylr-well();
+      }
+    }
+  }
+}
+
+// -------------------------------------------------------------
+// footer
+// -------------------------------------------------------------
+#footer-wrapper {
+  #footer {
+    @include main-container();
+    @include adjust-font-size-to($font-size * .9);
+    text-align: right;
+    line-height: $line-height;
+  }
+}
