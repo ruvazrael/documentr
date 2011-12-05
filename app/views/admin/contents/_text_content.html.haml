@@ -5,5 +5,5 @@
   = f.input :text
   = f.input :content
   = f.input :source
-  = f.input :author_id, :as => :hidden, :input_html => { :value => "#{current_user.id}"}     
+  = f.hidden_field :author_id, :value => "#{current_user.id}"         
   = f.submit

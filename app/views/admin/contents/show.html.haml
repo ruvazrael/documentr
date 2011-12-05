@@ -6,7 +6,7 @@
   = c.attribute :description if @content.description.present?
   - if @content.file.present?
     = c.attribute :file do
-      = image_tag @content.file_url.to_s
+      = link_to image_tag(@content.file_url.to_s),@content.file_url,:target => "_blank"
   = c.attribute :source if @content.source.present?
   = c.association :author, :using => 'email'
 
