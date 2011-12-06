@@ -1,5 +1,22 @@
 <h1>Content site</h1>
 
+<%= table_for @contents do |t| 
+  t.column :id, :width => '30px', :align => 'right'
+  t.column :title, :filter => :like
+  t.action { |r| link_to image_tag(r.thumb_url,:width => 50), admin_content_path(r), :target => "_blank"  }
+  t.column :content do |content|
+    if content.link.present?
+      link_to(content.link,content.link,:target => "_blank")
+    else
+      content.content
+    end
+  end
+  t.action {|content| link_to "Show", admin_content_path(content) }
+  t.action {|content|  link_to('Edit', edit_admin_content_path(content)) if can? :update, content }
+  t.action {|content| link_to('Destroy',  admin_content_path(content), confirm: 'Are you sure?', :method => 'delete') if can? :destroy, content }
+  
+end  %>
+
 <table>
   <tr>
     <th>id</th><th>Title</th><th>Bild</th><th>Content</th>

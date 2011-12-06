@@ -3,7 +3,7 @@ class Admin::ContentsController < Admin::ApplicationController
   load_and_authorize_resource
   
   def index
-    @contents = Content.all
+    @contents = Content.find_for_table(params)
   end
   
   def show
