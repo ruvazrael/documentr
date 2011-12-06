@@ -27,6 +27,7 @@ class Admin::ContentsController < Admin::ApplicationController
   
   def new
     @content = class_for(params[:content_type]).new()
+    
   end
   
   def create

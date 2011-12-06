@@ -17,33 +17,23 @@
   
 end  %>
 
-<table>
-  <tr>
-    <th>id</th><th>Title</th><th>Bild</th><th>Content</th>
-  </tr>
-  <% @contents.each do |content| %>
-    <tr>
-      <td><%= content.id %></td>
-      <td><%= content.title %></td>
-      <td><%= link_to image_tag(content.thumb_url,:width => 50), admin_content_path(content), :target => "_blank" %></td>
-      <td><%if content.link.present? %>
-              <%= link_to(content.link,content.link,:target => "_blank") %>
-            <% else %>  
-              <%= link_to(content.content, content.content, :target => "_blank") %>
-            <% end %>
-      </td>
-      <td><%= link_to "Show", admin_content_path(content)  %><td>
-      <td><%= link_to('Edit', edit_admin_content_path(content)) if can? :update, content %></td>  
-      <td><%= link_to('Destroy',  admin_content_path(content), confirm: 'Are you sure?', :method => 'delete') if can? :destroy, content %></td>
-    </tr>  
-  <% end %>  
-</table>
 
 <br />
 <% if can?(:create, Content) %>
-  <%= form_tag new_admin_content_path(), :method => 'get' do %>
+  <%= form_tag new_admin_content_path(), :method => 'get', :id => "type_chooser" do %>
     New Content:
-    <%= select_tag "content_type", options_for_select(Content::TypesForSelect)%>
+    <%= select_tag("content_type", Content::TypesForSelect.map do |name, type|
+       "<option data-action=\"#{new_with_type_admin_contents_path(type)}\" value=\"#{type}\">#{name}</option>"
+      end.join().html_safe)%>
     <%= submit_tag "Create" %>
-  <% end %>
+  <% end %>  
 <% end %>  
+
+<script type="text/javascript" charset="utf-8">
+  $(function() {
+    $("form#type_chooser").submit(function() {
+      window.location = $("select#content_type option:selected").attr("data-action");
+      return false;
+    });
+  })
+</script>

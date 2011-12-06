@@ -15,10 +15,15 @@
   resources :pages
   resources :sessions
   resources :password_resets
+  
   namespace :admin do
-    resources :users
-    resources :contents
    
+    resources :contents do 
+      collection do
+        get "new/:content_type" => 'contents#new', :as => 'new_with_type'
+      end
+    end 
+    resources :users
   end
     
    

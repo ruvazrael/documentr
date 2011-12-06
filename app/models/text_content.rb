@@ -1,4 +1,4 @@
-class TextContent
+class TextContent < Content
   validates_presence_of :content
   
   def thumb_url() "T" end

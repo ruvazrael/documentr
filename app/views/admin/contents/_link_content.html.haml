@@ -1,4 +1,4 @@
-= simple_form_for @content, :as => 'content', :url=> admin_contents_path(), :html => {:multipart => true} do |f|
+= simple_form_for @content, :as => 'content', :url=> (@content.new_record? ? admin_contents_path() :admin_content_path(@content)), :html => {:multipart => true} do |f|
   = hidden_field_tag :content_type, 'link'
   = f.input :title
   = f.input :description
