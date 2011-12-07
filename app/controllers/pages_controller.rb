@@ -1,20 +1,5 @@
 class PagesController < ApplicationController
 
-   def home
-     @pagetitle = "Welcome to Documentr"
-   end
-
-   def resources
-     @pagetitle = "Welcome to Documentr"
-   end
-
-   def contact
-     @pagetitle = "Welcome to Documentr"
-   end
-
-   def about
-     @pagetitle = "Welcome to Documentr"
-   end
   
   def index
     @pages = Page.all

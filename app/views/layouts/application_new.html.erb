@@ -5,22 +5,29 @@
   <%= javascript_include_tag 'stylr/all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-	<% if Rails.env.development? %>
-  <script type="text/javascript" charset="utf-8">
-    jQuery(function(){ jQuery("div#debugparams").click(function(){jQuery("div#debugparams").hide()})});
-  </script>
+  <%= yield :header %>
+  <% if Rails.env.development? || content_for?(:dom_ready_scripts) %>
+    <script type="text/javascript" charset="utf-8">
+      (function($) {
+        $(function() {
+        	<% if Rails.env.development? %>
+            $("div#debugparams").click(function(){jQuery("div#debugparams").hide()});
+          <% end %>
+          <%= yield :dom_ready_scripts %>
+        });
+      })(jQuery);
+    </script>
   <% end %>
-
-  <title>Documentr</title>
+  <title>Document || <%= @pagetitle %></title>
 </head>
 <body>
 
    
-   <% if Rails.env.development? %>
-    <div id="debugparams" >
-      <%= debug(params) %>
-    </div>
-   <% end %>
+    <% if Rails.env.development? %>
+     <div id="debugparams" >
+       <%= debug(params) %>
+     </div>
+    <% end %>
 <%#
   Example for a metabar. The metabar uses the same styles and markup as the topbar
   but with a smaller line-height and color by default. Right aligned content must
@@ -154,6 +161,7 @@
 
 <div id="footer-wrapper">
   <div id="footer">
+
     &copy; <%= Time.now.year -%> metaminded. All rights reserved. &#10084; Handmade with love.
   </div>
 </div>

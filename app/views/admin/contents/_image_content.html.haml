@@ -3,7 +3,7 @@
   = f.input :title
   = f.input :description
   = f.input :content
-  = f.input :file, :as => 'file'
+  = f.input :file, :as => 'file', :required => !@content.file_url.present?
   = f.input :source
   = f.hidden_field :author_id, :value => "#{current_user.id}"     
   = f.submit
