@@ -21,7 +21,7 @@
       link_to(content.link,content.link,:target => "_blank")
     end
   end  
-  t.column :category  
+  # t.association :categories, :title
   t.action {|content| link_to "Show", admin_content_path(content) }
   t.action {|content|  link_to('Edit', edit_admin_content_path(content)) if can? :update, content }
   t.action {|content| link_to('Destroy',  admin_content_path(content), confirm: 'Are you sure?', :method => 'delete') if can? :destroy, content }

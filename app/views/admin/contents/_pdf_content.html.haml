@@ -7,5 +7,6 @@
     = link_to "Datei herunterladen", @content.file_url
   = f.input :file, :as => 'file', :required => !@content.file_url.present?
   = f.input :source
+  = f.association :category
   = f.hidden_field :author_id, :value => "#{current_user.id}"     
   = f.submit

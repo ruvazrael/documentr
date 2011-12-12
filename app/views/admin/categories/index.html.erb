@@ -1,0 +1,18 @@
+<h1>Category site</h1>
+
+<%= 
+  table_for @categories do |t|
+    t.column :id
+    t.column :title
+    t.column :icon
+    t.action do |category|
+      link_to('Show', [:admin, category]) + " " +
+      (can?(:update, category) ? link_to('Edit', edit_admin_category_path(category)) : '') + " " +
+      (can?(:destroy, category) ? link_to('Destroy',  [:admin, category], confirm: 'Are you sure?', method: :delete) : '')
+    end
+  end
+%>
+<br />
+<% if can? :create, @category %>
+  <%= link_to 'New Category', new_admin_category_path %>
+<% end %>

@@ -24,6 +24,7 @@
       end
     end 
     resources :users
+    resources :categories
   end
     
    

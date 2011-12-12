@@ -1,8 +1,8 @@
 class CreateCategoriesContents < ActiveRecord::Migration
   def change
     create_table :categories_contents, :id => false do |t|
-      t.references :category_id 
-      t.references :content_id
+      t.references :category 
+      t.references :content
       t.timestamps
    end 
  end

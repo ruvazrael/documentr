@@ -75,6 +75,9 @@
         <% if can? :manage, User %>
           <li><%= link_to 'Users',     admin_users_path() %></li>
         <% end %>
+        <% if can? :manage, Category %>
+          <li><%= link_to 'Categories',     admin_categories_path() %></li>
+        <% end %>
         <li><% if current_user %>
            Logged in as <%= current_user.email %></li>
            <li><%= link_to "Log out", logout_path() %></li>

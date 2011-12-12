@@ -26,12 +26,12 @@ class Admin::CategoriesController < Admin::ApplicationController
     end
 
     def new
-      @category = class_for(params[:category_type]).new()
+      @category = Category.new
 
     end
 
     def create
-      @category = class_for(params[:category_type]).new(params[:category])
+      @category = Category.new(params[:category])
       if @category.save
         flash[:notice] = "Created Category"
         redirect_to admin_category_path(@category)

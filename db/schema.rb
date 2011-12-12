@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(:version => 20111207153610) do
   end
 
   create_table "categories_contents", :id => false, :force => true do |t|
-    t.integer  "category_id_id"
-    t.integer  "content_id_id"
+    t.integer  "category_id"
+    t.integer  "content_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
