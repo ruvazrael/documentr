@@ -1,0 +1,7 @@
+<%= simple_form_for @content, :as => 'content', :url => (@content.new_record? ? admin_contents_path() : admin_content_path(@content)), :html => {:multipart => true} do |f| %>
+  <%= f.input :title %>
+  <%= f.association :categories %>
+  <%= render :partial => @content.class.to_s.underscore, locals: {f: f} %>
+  <%= f.hidden_field :author_id, :value => "#{current_user.id}" %>
+  <%= f.submit %>
+<% end %>

@@ -21,9 +21,13 @@
       link_to(content.link,content.link,:target => "_blank")
     end
   end  
-  t.association :category, :title, :header => 'Category'
+  t.action :header => 'Category' do |r|
+    r.categories.map do |cat|
+      cat.icon_url().present? ? image_tag(cat.icon_url(), :title => cat.title) : cat.title
+    end.join(" ")
+  end
   t.action {|content| link_to "Show", admin_content_path(content) }
-  t.action {|content|  link_to('Edit', edit_admin_content_path(content)) if can? :update, content }
+  t.action {|content| link_to('Edit', edit_admin_content_path(content)) if can? :update, content }
   t.action {|content| link_to('Destroy',  admin_content_path(content), confirm: 'Are you sure?', :method => 'delete') if can? :destroy, content }
   
 end  %>
